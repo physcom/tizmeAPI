@@ -5,6 +5,7 @@ import com.example.demo.dto.response.VoterDTO;
 import com.example.demo.repository.VoterRepository;
 import com.example.demo.service.voter.VoterService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -18,9 +19,9 @@ public class VoterServiceImpl implements VoterService {
 
     @Override
     public List<VoterDTO> getVoterByRequest(VoterSearchRequest voterSearchRequest) {
-        String firstName = (voterSearchRequest.getFirstName() == null)?"":voterSearchRequest.getFirstName();
-        String lastName = (voterSearchRequest.getLastName() == null)?"":voterSearchRequest.getLastName();
-        String middleName = ( voterSearchRequest.getMiddleName() == null)?"": voterSearchRequest.getMiddleName();
-        return voterRepository.findAllByRequest(firstName.toLowerCase(), lastName.toLowerCase(), middleName.toLowerCase());
+        String firstName = StringUtils.isEmpty(voterSearchRequest.getFirstName())?"-":voterSearchRequest.getFirstName();
+        String lastName = StringUtils.isEmpty(voterSearchRequest.getLastName())?"-":voterSearchRequest.getLastName();
+        String middleName = StringUtils.isEmpty(voterSearchRequest.getMiddleName())?"-": voterSearchRequest.getMiddleName();
+        return voterRepository.findAllByRequest(firstName.toUpperCase(), lastName.toUpperCase(), middleName.toUpperCase());
     }
 }

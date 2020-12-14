@@ -21,7 +21,6 @@ public class VoterServiceImpl implements VoterService {
         String firstName = (voterSearchRequest.getFirstName() == null)?"":voterSearchRequest.getFirstName();
         String lastName = (voterSearchRequest.getLastName() == null)?"":voterSearchRequest.getLastName();
         String middleName = ( voterSearchRequest.getMiddleName() == null)?"": voterSearchRequest.getMiddleName();
-        List<VoterDTO> result = voterRepository.findAllByRequest(firstName, lastName, middleName);
-        return result;
+        return voterRepository.findAllByRequest(firstName.toLowerCase(), lastName.toLowerCase(), middleName.toLowerCase());
     }
 }

@@ -5,11 +5,13 @@ import com.example.demo.dto.response.VoterDTO;
 import com.example.demo.repository.VoterRepository;
 import com.example.demo.service.voter.VoterService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class VoterServiceImpl implements VoterService {
     private final VoterRepository voterRepository;
 

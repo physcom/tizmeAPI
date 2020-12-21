@@ -19,9 +19,9 @@ public class VoterServiceImpl implements VoterService {
 
     @Override
     public List<VoterDTO> getVoterByRequest(VoterSearchRequest voterSearchRequest) {
-        String firstName = StringUtils.isEmpty(voterSearchRequest.getFirstName())?"-":voterSearchRequest.getFirstName();
-        String lastName = StringUtils.isEmpty(voterSearchRequest.getLastName())?"-":voterSearchRequest.getLastName();
-        String middleName = StringUtils.isEmpty(voterSearchRequest.getMiddleName())?"-": voterSearchRequest.getMiddleName();
+        String firstName = StringUtils.isEmpty(voterSearchRequest.getFirstName())?"+":voterSearchRequest.getFirstName();
+        String lastName = StringUtils.isEmpty(voterSearchRequest.getLastName())?"+":voterSearchRequest.getLastName();
+        String middleName = StringUtils.isEmpty(voterSearchRequest.getMiddleName())?"+": voterSearchRequest.getMiddleName();
         return voterRepository.findAllByRequest(firstName.toUpperCase(), lastName.toUpperCase(), middleName.toUpperCase());
     }
 }

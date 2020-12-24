@@ -27,4 +27,13 @@ public class VoterServiceImpl implements VoterService {
         String tikTitle = StringUtils.isEmpty(voterSearchRequest.getTikTitle())?"-":voterSearchRequest.getTikTitle();
         return voterRepository.findAllByRequest(firstName.toUpperCase(), lastName.toUpperCase(), middleName.toUpperCase(), tikTitle.toLowerCase());
     }
+
+    @Override
+    public Integer check(VoterSearchRequest voterSearchRequest) {
+        String firstName = StringUtils.isEmpty(voterSearchRequest.getFirstName())?"-":voterSearchRequest.getFirstName();
+        String lastName = StringUtils.isEmpty(voterSearchRequest.getLastName())?"-":voterSearchRequest.getLastName();
+        String middleName = StringUtils.isEmpty(voterSearchRequest.getMiddleName())?"-": voterSearchRequest.getMiddleName();
+        String uikTitle = StringUtils.isEmpty(voterSearchRequest.getUikTitle())?"-":voterSearchRequest.getUikTitle();
+        return voterRepository.check(firstName.toUpperCase(), lastName.toUpperCase(), middleName.toUpperCase(), uikTitle.toLowerCase()).size();
+    }
 }

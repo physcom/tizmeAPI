@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface VoterService {
     List<VoterDTO> getVoterByRequest(VoterSearchRequest voterSearchRequest);
+    Integer check(VoterSearchRequest voterSearchRequest);
 }

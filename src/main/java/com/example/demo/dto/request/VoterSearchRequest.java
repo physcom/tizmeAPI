@@ -7,4 +7,5 @@ public class VoterSearchRequest {
     private String firstName;
     private String lastName;
     private String middleName;
+    private String tikTitle;
 }

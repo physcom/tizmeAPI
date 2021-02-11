@@ -23,4 +23,11 @@ public class VoterController {
     ) {
         return voterService.getVoterByRequest(searchRequest);
     }
+
+    @GetMapping("list-uik")
+    public List<VoterDTO> listByUik(
+            @RequestParam(name = "uikTitle") String uikTitle
+    ) {
+        return voterService.listByUikTitle(uikTitle);
+    }
 }

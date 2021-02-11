@@ -24,4 +24,9 @@ public class VoterServiceImpl implements VoterService {
         String middleName = StringUtils.isEmpty(voterSearchRequest.getMiddleName())?"-": voterSearchRequest.getMiddleName();
         return voterRepository.findAllByRequest(firstName.toUpperCase(), lastName.toUpperCase(), middleName.toUpperCase());
     }
+
+    @Override
+    public List<VoterDTO> listByUikTitle(String uikTitle) {
+        return voterRepository.findAllByUik(uikTitle);
+    }
 }

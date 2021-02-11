@@ -5,4 +5,5 @@ public interface VoterDTO {
     String getLastName();
     String getMiddleName();
     String getUikTitle();
+    String getTikTitle();
 }

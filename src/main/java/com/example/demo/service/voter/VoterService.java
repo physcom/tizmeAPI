@@ -8,4 +8,5 @@ import java.util.List;
 public interface VoterService {
     List<VoterDTO> getVoterByRequest(VoterSearchRequest voterSearchRequest);
     List<VoterDTO> listByUikTitle(String uikTitle);
+    Integer check(VoterSearchRequest voterSearchRequest);
 }

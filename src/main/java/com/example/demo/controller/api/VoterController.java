@@ -30,4 +30,13 @@ public class VoterController {
     ) {
         return voterService.listByUikTitle(uikTitle);
     }
+
+    @PostMapping("check")
+    public ResponseEntity<?> check(
+            @RequestBody VoterSearchRequest searchRequest
+    ) {
+        Integer response = voterService.check(searchRequest);
+
+        return new ResponseEntity<>(new ApiResponse(true, response.toString()), HttpStatus.OK);
+    }
 }

@@ -18,8 +18,6 @@ public interface VoterRepository extends JpaRepository<Voter, Long> {
 
     @Query(value = "select v.id from voter v left join uik u on u.id = v.uik_id where (?1 = '%-%' or upper(v.first_name) LIKE %?1%) and (?2 = '%-%' or upper(v.last_name) LIKE %?2%)  and (?3 = '%-%' or upper(v.middle_name) LIKE %?3%) and (?4 = '%-%' or lower(u.name) LIKE %?4%)", nativeQuery = true)
     List<VoterDTO> check(String firstName, String lastName, String middleName, String uikTitle);
-    @Query(value = "select TRIM(v.first_name) as firstName, v.last_name as lastName, v.middle_name as middleName, u.name as uikTitle from voter v left join uik u on u.id = v.uik_id where (?1 = '%-%' or upper(v.first_name) LIKE %?1%) and (?2 = '%-%' or upper(v.last_name) LIKE %?2%)  and (?3 = '%-%' or upper(v.middle_name) LIKE %?3%) ", nativeQuery = true)
-    List<VoterDTO> findAllByRequest(String firstName, String lastName, String middleName);
 
     @Query(value = "select TRIM(v.first_name) as firstName, TRIM(v.last_name) as lastName, TRIM(v.middle_name) as middleName, u.name as uikTitle from voter v left join uik u on u.id = v.uik_id where u.name LIKE %?1% ", nativeQuery = true)
     List<VoterDTO> findAllByUik(String uikTitle);

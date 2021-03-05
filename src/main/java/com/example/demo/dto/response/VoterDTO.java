@@ -1,8 +1,8 @@
 package com.example.demo.dto.response;
 
 public interface VoterDTO {
-    String getFirstName();
     String getLastName();
+    String getFirstName();
     String getMiddleName();
     String getUikTitle();
     String getTikTitle();

@@ -4,6 +4,7 @@ import com.example.demo.dto.request.VoterSearchRequest;
 import com.example.demo.dto.response.VoterDTO;
 import com.example.demo.repository.VoterRepository;
 import com.example.demo.service.voter.VoterService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -37,6 +38,7 @@ public class VoterServiceImpl implements VoterService {
         return voterRepository.check(firstName.toUpperCase(), lastName.toUpperCase(), middleName.toUpperCase(), uikTitle.toLowerCase()).size();
     }
 
+    @Cacheable(value= "uik", key= "#uikTitle", unless="#uikTitle == null")
     @Override
     public List<VoterDTO> listByUikTitle(String uikTitle) {
         return voterRepository.findAllByUik(uikTitle);
